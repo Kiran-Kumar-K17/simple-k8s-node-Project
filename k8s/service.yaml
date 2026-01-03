@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-k8s-node-project-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: simple-k8s-node-project
+  type: LoadBalancer
+status:
+  loadBalancer: {}
