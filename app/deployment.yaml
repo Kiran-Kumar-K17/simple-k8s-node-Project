@@ -1,24 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: simple-k8s-node-project
   name: simple-k8s-node-project
+  namespace: demo
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: simple-k8s-node-project
-  strategy: {}
   template:
     metadata:
       labels:
         app: simple-k8s-node-project
     spec:
       containers:
-        - image: kirankumark17/simple-k8s-node-project:v.1
-          name: simple-k8s-node-project
+        - name: simple-k8s-node-project
+          image: kirankumark17/simple-k8s-node-project:v.1
           ports:
             - containerPort: 3000
-          resources: {}
-status: {}
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
