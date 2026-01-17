@@ -1,20 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-node-app
+  name: my-app
   namespace: argocd
 spec:
   project: default
-
   source:
     repoURL: https://github.com/Kiran-Kumar-K17/simple-k8s-node-Project.git
     targetRevision: main
     path: app
-
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
-
+    namespace: default
   syncPolicy:
     automated:
       prune: true
