@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: redis
+  namespace: argocd
+spec:
+  description: Project for Redis components
+  sourceRepos:
+    - https://github.com/Kiran-Kumar-K17/simple-k8s-node-Project.git
+  destinations:
+    - namespace: redis
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
