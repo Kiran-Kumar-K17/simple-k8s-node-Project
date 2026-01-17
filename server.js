@@ -6,6 +6,6 @@ app.get("/", (req, res) => {
   res.send("Hello Welcome to K8s");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is Running on PORT: ${PORT}`);
 });

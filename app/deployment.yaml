@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: kirankumark17/simple-k8s-node-project:v.1
+          image: kirankumark17/simple-k8s-node-project:v.2
 
           ports:
             - containerPort: 8080
